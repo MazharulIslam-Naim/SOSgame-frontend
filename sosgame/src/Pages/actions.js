@@ -6,6 +6,21 @@ import { withStyles } from '@material-ui/core/styles';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 
 class Actions extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+
+    };
+    this.changeView = this.changeView.bind(this);
+  }
+
+  changeView() {
+    this.props.nextPage({
+      view: "Result"
+    });
+  };
+
   render() {
     const { classes } = this.props;
 
@@ -28,7 +43,10 @@ class Actions extends Component {
           <u>a hurricane.</u>
         </Typography>
 
-        <Button className={classes.done} >
+        <Button
+          className={classes.done}
+          onClick={this.changeView}
+        >
           Done <KeyboardArrowRight />
         </Button>
 

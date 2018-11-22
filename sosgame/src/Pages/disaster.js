@@ -16,7 +16,14 @@ class Disaster extends Component {
       distance: 'Near'
 
     };
+    this.changeView = this.changeView.bind(this);
   }
+
+  changeView() {
+    this.props.nextPage({
+      view: "Gathering"
+    });
+  };
 
   render() {
     const { classes } = this.props;
@@ -72,10 +79,16 @@ class Disaster extends Component {
           alignItems="flex-end"
           spacing={24}
         >
-          <Button className={classes.sOrL}>
+          <Button
+            className={classes.sOrL}
+            onClick={this.changeView}
+          >
             Stay <KeyboardArrowRight />
           </Button>
-          <Button className={classes.sOrL}>
+          <Button
+            className={classes.sOrL}
+            onClick={this.changeView}
+          >
             Evacuate <KeyboardArrowRight />
           </Button>
         </Grid>

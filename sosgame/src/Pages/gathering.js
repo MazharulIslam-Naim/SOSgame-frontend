@@ -7,6 +7,21 @@ import { withStyles } from '@material-ui/core/styles';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 
 class Gathering extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+
+    };
+    this.changeView = this.changeView.bind(this);
+  }
+
+  changeView() {
+    this.props.nextPage({
+      view: "Actions"
+    });
+  };
+
   render() {
     const { classes } = this.props;
 
@@ -28,7 +43,10 @@ class Gathering extends Component {
           <Typography className={classes.title} >
           Selected items:
           </Typography>
-          <Button className={classes.done} >
+          <Button
+            className={classes.done}
+            onClick={this.changeView}
+          >
             Done <KeyboardArrowRight />
           </Button>
         </Paper>

@@ -4,12 +4,12 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import ListItemText from '@material-ui/core/ListItemText';
-import Checkbox from '@material-ui/core/Checkbox';
-import IconButton from '@material-ui/core/IconButton';
+// import List from '@material-ui/core/List';
+// import ListItem from '@material-ui/core/ListItem';
+// import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+// import ListItemText from '@material-ui/core/ListItemText';
+// import Checkbox from '@material-ui/core/Checkbox';
+// import IconButton from '@material-ui/core/IconButton';
 
 class Story extends Component {
   constructor(props) {
@@ -19,6 +19,7 @@ class Story extends Component {
       start: {}
 
     };
+    this.changeView = this.changeView.bind(this);
   }
 
   componentDidMount() {
@@ -34,6 +35,12 @@ class Story extends Component {
     if (response.status !== 200) throw Error(body.message);
 
     return body;
+  };
+
+  changeView() {
+    this.props.nextPage({
+      view: "Disaster"
+    });
   };
 
   render() {
@@ -74,7 +81,10 @@ class Story extends Component {
           */}
 
 
-        <Button className={classes.next}>
+        <Button
+          className={classes.next}
+          onClick={this.changeView}
+        >
           Next <KeyboardArrowRight />
         </Button>
       </Grid>

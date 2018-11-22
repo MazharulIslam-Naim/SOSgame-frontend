@@ -19,7 +19,14 @@ class Result extends Component {
       success: 'Pas'
 
     };
+    this.changeView = this.changeView.bind(this);
   }
+
+  changeView() {
+    this.props.nextPage({
+      view: "Start"
+    });
+  };
 
   render() {
     const { classes } = this.props;
@@ -92,7 +99,10 @@ class Result extends Component {
               </Grid>
             )
         }
-        <Button className={classes.playAgain} >
+        <Button
+          className={classes.playAgain}
+          onClick={this.changeView}
+        >
           PLAY AGAIN <KeyboardArrowRight />
         </Button>
 
